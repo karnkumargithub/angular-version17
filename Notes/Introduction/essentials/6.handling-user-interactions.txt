@@ -1,0 +1,32 @@
+1> Adding an attribute with the events name inside of parentheses
+Specify what JavaScript statement you want to run when it fires
+
+<button (click)="save()">Save</button>
+
+2> 
+@Component({
+  standalone: true,
+  selector: 'text-transformer',
+  template: `
+    <p>{{ announcement }}</p>
+    <button (click)="transformText()">Abracadabra!</button>
+  `,
+})
+export class TextTransformer {
+  announcement = 'Hello again Angular!';
+  transformText() {
+    this.announcement = this.announcement.toUpperCase();
+  }
+}
+
+3> Other common examples of event listeners include:
+
+<input (keyup)="validateInput()" />
+<input (keydown)="updateInput()" />
+
+4> $event
+
+If you need to access the [event](Event - Web APIs | MDN) object, 
+Angular provides an implicit $event variable that you can be pass to a function:
+
+<button (click)="createUser($event)">Submit</button>

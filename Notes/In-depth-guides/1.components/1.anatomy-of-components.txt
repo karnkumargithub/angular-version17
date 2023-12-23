@@ -1,0 +1,57 @@
+1> Every component must have
+    - A TypeScript class with behaviors such as handling user input and fetching data from a server
+    - An HTML template that controls what renders into the DOM
+    - A CSS selector that defines how the component is used in HTML
+
+    @Component({
+    selector: 'profile-photo',
+    template: `<img src="profile-photo.jpg" alt="Your profile photo">`,
+    })
+    export class ProfilePhoto { }
+
+
+2> Components can optionally include a list of CSS styles that apply to that component's DOM:
+
+@Component({
+  selector: 'profile-photo',
+  template: `<img src="profile-photo.jpg" alt="Your profile photo">`,
+  styles: `img { border-radius: 50%; }`,
+})
+export class ProfilePhoto { }
+
+By default, a component's styles only affect elements defined in that component's template. 
+
+3> You can alternatively choose to write your template and styles in separate files:
+
+@Component({
+  selector: 'profile-photo',
+  templateUrl: 'profile-photo.html',
+  styleUrl: 'profile-photo.css',
+})
+export class ProfilePhoto { }
+
+Both templateUrl and styleUrl are relative to the directory in which the component resides.
+
+4> Using components:-
+
+@Component({
+  selector: 'profile-photo',
+  ...
+})
+export class ProfilePhoto { }
+
+@Component({
+  selector: 'user-profile',
+  template: `
+    <profile-photo />
+    <button>Upload a new profile photo</button>`,
+  ...,
+})
+export class UserProfile { }
+
+Angular creates an instance of the component for every matching HTML element it encounters. 
+The DOM element that matches a component's selector is referred to as that component's host element. 
+The contents of a component's template are rendered inside its host element.
+The DOM rendered by a component, corresponding to that component's template, is called that component's view.
+
+In composing components in this way, you can think of your Angular application as a tree of components.

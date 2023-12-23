@@ -1,0 +1,28 @@
+1> components -> The basic building blocks of an angular apps. It also provides structure to the apps 
+that makes easy to understand parts with clear responsiblility. Very easy to maintain and enhance.
+
+2> We know from earlier that component's component decorator has some meta data like
+selector, template or templateUrl, styles or styleUrl or styleUrls.
+But from angular 14 , we have standalone: true which means the component don't depend on
+module (ngModules) and it can be used anywhere in the app.
+
+Angular is modular because of component architecture.
+How we will use one component into another
+1> import component at the top
+2> add into the imports array in @component decorator
+3> add the selector in the current component's html (template). 
+
+// todo-list.component.ts
+import {TodoListItem} from './todo-list-item.component.ts';
+@Component({
+  standalone: true,
+  imports: [TodoListItem],
+  template: `
+    <ul>
+      <todo-list-item></todo-list-item>
+    </ul>
+  `,
+})
+export class TodoList {}
+
+Note -> standalone: true must be define in todo-list-item component.

@@ -1,0 +1,40 @@
+1> we can use interpolation.
+@Component({
+  selector: 'todo-list-item',
+  template: `
+    <p>Title: {{ taskTitle }}</p>
+  `,
+})
+export class TodoListItem {
+  taskTitle = 'Read cup of coffee';
+}
+
+2> When you need to dynamically set the value of standard DOM properties on an HTML element, 
+the property is wrapped in square brackets to inform Angular that the declared value should 
+be interpreted as a JavaScript-like statement (with some Angular enhancements) instead of a plain string.
+This is called property binding.
+
+@Component({
+  selector: 'sign-up-form',
+  template: `
+    <button type="submit" [disabled]="formIsInvalid">Submit</button>
+  `,
+})
+export class SignUpForm {
+  formIsInvalid = true;
+}
+
+3> One thing , we should remember that any html element may have standard DOM properties 
+and custom attributes. Like width, height , placeholder for input are standard html attributes. It is
+predefined. So we need to add sqaure brackets only for dynamic render . But for custom attributes that we
+have added not by default , then we need to add attr.
+
+@Component({
+  standalone: true,
+  template: `
+    <button [attr.data-test-id]="testId">Primary CTA</button>
+  `,
+})
+export class AppBanner {
+  testId = 'main-cta';
+}

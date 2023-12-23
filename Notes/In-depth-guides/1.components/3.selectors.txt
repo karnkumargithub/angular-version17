@@ -1,0 +1,63 @@
+1> Every component defines a CSS selector that determines how the component is used:
+@Component({
+  selector: 'profile-photo',
+  ...
+})
+export class ProfilePhoto { }
+
+2> You use a component by creating a matching HTML element in the templates of other components:
+@Component({
+  template: `
+    <profile-photo />
+    <button>Upload a new profile photo</button>`,
+  ...,
+})
+export class UserProfile { }
+
+
+3> 
+Angular matches selectors statically at compile-time. Changing the DOM at run-time, either via Angular bindings or with DOM APIs, does not affect the components rendered.
+An element can match exactly one component selector. If multiple component selectors match a single element, Angular reports an error.
+Component selectors are case-sensitive.
+
+4> Types of selectors :-
+    - type selector : profile-photo
+    - attribute selector: [type=reset]
+    - class selector: .menu-items
+
+5> The :not pseudo-class
+-> We could define a [dropzone] attribute selector and prevent matching textarea elements:
+@Component({
+  selector: '[dropzone]:not(textarea)',
+  ...
+})
+export class DropZone { }
+
+Angular does not support any other pseudo-classes or pseudo-elements in component selectors.
+
+6> Combining selectors
+@Component({
+  selector: 'button[type="reset"]',
+  ...
+})
+export class ResetButton { }
+
+@Component({
+  selector: 'drop-zone, [dropzone]',
+  ...
+})
+export class DropZone { }
+
+Angular creates a component for each element that matches any of the selectors in the list.
+
+7> The vast majority of components should use a custom element name as their selector. All custom element names should include a hyphen . Angular uses the ng selector prefix for its own framework APIs. Never use ng as a selector prefix for your own custom components.
+
+8> When to use an attribute selector
+
+You should consider an attribute selector when you want to create a component on a standard native element. 
+
+@Component({
+  selector: 'button[yt-upload]',
+   ...
+})
+export class YouTubeUploadButton { }

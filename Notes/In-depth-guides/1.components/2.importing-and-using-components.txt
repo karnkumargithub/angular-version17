@@ -1,0 +1,24 @@
+1> Angular supports two ways of making a component available to other components: as a standalone component or in an NgModule.
+
+2> Standalone components-:
+A standalone component is a component that sets standalone: true in its component metadata. Standalone components directly import other components, directives, and pipes used in their templates:
+
+@Component({
+  standalone: true,
+  selector: 'profile-photo',
+})
+export class ProfilePhoto { }
+
+
+@Component({
+  standalone: true,
+  imports: [ProfilePhoto],
+  template: `<profile-photo />`
+})
+
+Standalone components are directly importable into other standalone components.
+The Angular team recommends using standalone components for all new development.
+
+Note: Standalone: true should be present in the component which is being imported and also in the component
+which imports other standalone components.
+

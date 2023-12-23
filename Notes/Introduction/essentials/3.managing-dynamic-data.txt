@@ -1,0 +1,18 @@
+1> component's data (i.e, state) and behaviour (i.e methods)
+
+2> state is nothing but a class level variable.
+
+3> whevener we wish to update the state, we do inside the methods using this keyword.
+
+
+@Component({ ... })
+export class TodoList {
+  taskTitle = '';
+  isComplete = false;
+  completeTask() {
+    this.isComplete = true;
+  }
+  updateTitle(newTitle: string) {
+    this.taskTitle = newTitle;
+  }
+}
